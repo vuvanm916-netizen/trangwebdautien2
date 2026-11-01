@@ -1,29 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang web của tôi</title>
+    <title>Trang Cá Nhân Của Tôi</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #eef2f5;
-            padding: 50px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .box {
+        .card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
         }
-        h1 { color: #007bff; }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 15px;
+        }
+        h1 { margin: 10px 0 5px; color: #333; font-size: 24px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .btn {
+            display: block;
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #5a6fe8; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>Xin chào thế giới! 👋</h1>
-        <p>Đây là trang web đầu tiên tôi làm được bằng điện thoại redmi turbo 4pro!</p>
+    <div class="card">
+        <!-- Thay link ảnh của bạn vào chỗ ngoặc kép bên dưới -->
+        <img src="https://i.imgur.com/6VBx3io.png" alt="Avatar" class="avatar">
+        <h1>Tên Của Bạn</h1>
+        <p>✨ Chào mừng bạn đến với không gian nhỏ của tôi trên GitHub! ✨</p>
+        <a href="https://facebook.com" class="btn" target="_blank">Facebook của tôi</a>
+        <a href="https://tiktok.com" class="btn" target="_blank" style="background: #333;">TikTok của tôi</a>
     </div>
 </body>
 </html>
