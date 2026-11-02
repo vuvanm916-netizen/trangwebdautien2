@@ -3,63 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân</title>
+    <title>Profile Cá Nhân - Vũ Văn Mạnh</title>
+    <!-- FontAwesome cho icon Mặt trăng / Mặt trời -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* Định nghĩa biến màu sắc */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --btn-bg: #334155;
+            --btn-text: #ffffff;
+            --btn-hover-bg: #38bdf8;
+            --btn-hover-text: #0f172a;
+        }
+
+        /* Chế độ Sáng (Light Mode) */
+        [data-theme="light"] {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --accent-color: #0284c7;
+            --btn-bg: #f8fafc;
+            --btn-text: #0f172a;
+            --btn-hover-bg: #0284c7;
+            --btn-hover-text: #ffffff;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
         }
+
         .container {
-            background: #1e293b;
+            background: var(--card-bg);
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 360px;
             text-align: center;
-            border: 1px solid #334155;
+            border: 1px solid var(--border-color);
+            position: relative;
         }
+
+        /* Nút Chuyển Theme Sáng/Tối */
+        .theme-toggle {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--btn-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
         .avatar {
             width: 96px;
             height: 96px;
             border-radius: 50%;
             margin-bottom: 16px;
-            border: 3px solid #38bdf8;
+            border: 3px solid var(--accent-color);
         }
+
         h1 { font-size: 22px; margin-bottom: 6px; }
-        .sub { color: #38bdf8; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
-        .bio { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 24px; }
-        .links { display: flex; flex-direction: column; gap: 12px; }
+        
+        .sub { 
+            color: var(--accent-color); 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 16px; 
+        }
+
+        .bio { 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            line-height: 1.6; 
+            margin-bottom: 24px; 
+        }
+
+        .links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+
         .btn {
-            background: #334155;
-            color: #fff;
+            background: var(--btn-bg);
+            color: var(--btn-text);
             padding: 12px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 500;
+            border: 1px solid var(--border-color);
             transition: all 0.2s;
         }
-        .btn:hover { background: #38bdf8; color: #0f172a; }
+
+        .btn:hover { 
+            background: var(--btn-hover-bg); 
+            color: var(--btn-hover-text); 
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- Nút chuyển đổi giao diện -->
+        <button class="theme-toggle" id="themeToggle" title="Chuyển chế độ Sáng/Tối">
+            <i class="fa-solid fa-sun"></i>
+        </button>
+
         <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Avatar" alt="Avatar" class="avatar">
-        <h1>Vũ Văn Mạnh </h1>
+        <h1>Vũ Văn Mạnh</h1>
         <div class="sub">Lập Trình Viên / Sáng Tạo Nội Dung</div>
         <p class="bio">Đam mê công nghệ và sáng tạo. Luôn học hỏi những điều mới mỗi ngày!</p>
+        
         <div class="links">
             <a href="https://facebook.com" target="_blank" class="btn">Facebook</a>
             <a href="https://zalo.me" target="_blank" class="btn">Zalo Liên Hệ</a>
             <a href="https://tiktok.com" target="_blank" class="btn">TikTok</a>
         </div>
     </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fa-solid fa-moon';
+            }
+        });
+    </script>
 </body>
 </html>
