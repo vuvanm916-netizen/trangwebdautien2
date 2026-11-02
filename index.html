@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Cá Nhân - Vũ Văn Mạnh</title>
-    <!-- FontAwesome cho icon Mặt trăng / Mặt trời -->
+    <title>Vũ Văn Mạnh - QC Engineer | Profile</title>
+    <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Định nghĩa biến màu sắc */
+        /* Định nghĩa biến màu sắc cho Dark/Light mode */
         :root {
             --bg-color: #0f172a;
             --card-bg: #1e293b;
@@ -21,7 +22,6 @@
             --btn-hover-text: #0f172a;
         }
 
-        /* Chế độ Sáng (Light Mode) */
         [data-theme="light"] {
             --bg-color: #f1f5f9;
             --card-bg: #ffffff;
@@ -55,11 +55,11 @@
 
         .container {
             background: var(--card-bg);
-            padding: 40px 30px;
+            padding: 40px 25px;
             border-radius: 20px;
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
             width: 100%;
-            max-width: 360px;
+            max-width: 400px;
             text-align: center;
             border: 1px solid var(--border-color);
             position: relative;
@@ -87,12 +87,31 @@
             color: var(--accent-color);
         }
 
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
         .avatar {
             width: 96px;
             height: 96px;
             border-radius: 50%;
-            margin-bottom: 16px;
             border: 3px solid var(--accent-color);
+            object-fit: cover;
+            background-color: var(--border-color);
+        }
+
+        /* Chấm xanh trạng thái sẵn sàng nhận việc */
+        .status-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+            background-color: #22c55e;
+            border: 2px solid var(--card-bg);
+            border-radius: 50%;
         }
 
         h1 { font-size: 22px; margin-bottom: 6px; }
@@ -101,14 +120,40 @@
             color: var(--accent-color); 
             font-size: 14px; 
             font-weight: 600; 
-            margin-bottom: 16px; 
+            margin-bottom: 12px; 
         }
 
         .bio { 
-            font-size: 14px; 
+            font-size: 13px; 
             color: var(--text-secondary); 
-            line-height: 1.6; 
-            margin-bottom: 24px; 
+            line-height: 1.5; 
+            margin-bottom: 20px; 
+        }
+
+        .info-box {
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px dashed var(--accent-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .info-box p {
+            margin-bottom: 4px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-box i {
+            color: var(--accent-color);
+            width: 20px;
+            text-align: center;
+            margin-right: 5px;
         }
 
         .links { 
@@ -124,33 +169,73 @@
             border-radius: 10px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 14px;
             border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             transition: all 0.2s;
+        }
+
+        .btn i {
+            font-size: 16px;
         }
 
         .btn:hover { 
             background: var(--btn-hover-bg); 
             color: var(--btn-hover-text); 
         }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: #0f172a;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Nút chuyển đổi giao diện -->
+        <!-- Nút chuyển đổi giao diện Sáng/Tối -->
         <button class="theme-toggle" id="themeToggle" title="Chuyển chế độ Sáng/Tối">
             <i class="fa-solid fa-sun"></i>
         </button>
 
-        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Avatar" alt="Avatar" class="avatar">
+        <div class="avatar-wrapper">
+            <!-- Bạn có thể thay link ảnh đại diện thật của mình vào đây -->
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=VuVanManh" alt="Vũ Văn Mạnh" class="avatar">
+            <span class="status-dot" title="Sẵn sàng cho công việc mới"></span>
+        </div>
+
         <h1>Vũ Văn Mạnh</h1>
-        <div class="sub">Lập Trình Viên / Sáng Tạo Nội Dung</div>
-        <p class="bio">Đam mê công nghệ và sáng tạo. Luôn học hỏi những điều mới mỗi ngày!</p>
+        <div class="sub">Chuyên viên Kiểm thử Phần mềm (QC Engineer)</div>
+        <p class="bio">Sinh viên chuyên ngành Điện tử Viễn thông tại Trường Đại học Công nghệ Giao thông Vận tải (2023 - 2027)[span_1](start_span)[span_1](end_span). Định hướng phát triển chuyên sâu trong lĩnh vực QC.</p>
         
+        <!-- Khung tóm tắt thông tin liên hệ từ CV -->
+        <div class="info-box">
+            <p><i class="fa-solid fa-envelope"></i> vu.vanm916@gmail.com[span_2](start_span)[span_2](end_span)</p>
+            <p><i class="fa-solid fa-phone"></i> 0989193659[span_3](start_span)[span_3](end_span)</p>
+            <p><i class="fa-solid fa-location-dot"></i> Hưng Yên[span_4](start_span)[span_4](end_span)</p>
+        </div>
+
         <div class="links">
-            <a href="https://facebook.com" target="_blank" class="btn">Facebook</a>
-            <a href="https://zalo.me" target="_blank" class="btn">Zalo Liên Hệ</a>
-            <a href="https://tiktok.com" target="_blank" class="btn">TikTok</a>
+            <a href="tel:0989193659" class="btn btn-primary">
+                <i class="fa-solid fa-phone-volume"></i> Gọi điện liên hệ
+            </a>
+            <a href="mailto:vu.vanm916@gmail.com" class="btn">
+                <i class="fa-solid fa-paper-plane"></i> Gửi Email
+            </a>
+            <a href="https://github.com" target="_blank" class="btn">
+                <i class="fa-brands fa-github"></i> GitHub Profile
+            </a>
+            <a href="https://facebook.com" target="_blank" class="btn">
+                <i class="fa-brands fa-facebook"></i> Facebook cá nhân
+            </a>
         </div>
     </div>
 
@@ -172,3 +257,4 @@
     </script>
 </body>
 </html>
+
