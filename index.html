@@ -253,6 +253,22 @@
         /* ---------- Main content ---------- */
         .main-content { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
 
+        .reel-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            background: #000;
+            box-shadow: var(--shadow-neon);
+        }
+        .reel-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .summary-box {
             background: var(--card-inner-bg);
             border-left: 3px solid var(--accent-cyan);
@@ -277,15 +293,15 @@
             text-align: center;
         }
         .highlight-value {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent-cyan);
         }
         .highlight-label {
             font-size: 12px;
             color: var(--text-muted);
-            margin-top: 4px;
-            line-height: 1.4;
+            margin-top: 6px;
+            line-height: 1.5;
         }
 
         .section-title {
@@ -351,9 +367,6 @@
         }
 
         .info-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 16px;
             font-size: 12px;
             color: var(--text-muted);
             margin: 8px 0 4px;
@@ -410,11 +423,6 @@
             background: rgba(56, 189, 248, 0.1);
             color: var(--accent-cyan);
             border: 1px solid var(--card-border);
-        }
-
-        .placeholder {
-            color: #f59e0b;
-            font-style: italic;
         }
 
         /* ---------- Footer ---------- */
@@ -490,7 +498,6 @@
         @media (max-width: 900px) {
             .dashboard-grid { grid-template-columns: 1fr; }
             .profile-sidebar { max-width: 450px; margin: 0 auto; }
-            .highlight-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 600px) {
@@ -526,7 +533,7 @@
             <aside class="profile-sidebar">
                 <div class="avatar-container">
                     <div class="avatar-glow-ring">
-                        <img src="https://lh3.googleusercontent.com/d/1_9iEWh9yR6c109V2R_OQG6B_n6Y9tE0j=s400"
+                        <img src="avatar.jpg"
                              alt="Ảnh đại diện Vũ Văn Mạnh"
                              class="avatar-img"
                              onerror="this.onerror=null; this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=ManhVuVan';">
@@ -581,22 +588,29 @@
 
             <main class="main-content">
 
+                <div class="reel-wrapper">
+                    <video class="reel-video" controls muted playsinline preload="metadata" poster="poster.jpg">
+                        <source src="personal-motion.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                </div>
+
                 <div class="summary-box">
                     <strong>Tóm tắt:</strong> QC Engineer với nền tảng kiểm thử chức năng và kiểm thử hồi quy. Có kinh nghiệm thiết kế kịch bản và test case, ghi nhận lỗi (Bug Report) rõ ràng, lập báo cáo kết quả kiểm thử. Đang tìm kiếm cơ hội để áp dụng và phát triển kỹ năng trong môi trường làm việc chuyên nghiệp.
                 </div>
 
                 <div class="highlight-grid">
                     <div class="highlight-card">
-                        <div class="highlight-value placeholder">[số]</div>
-                        <div class="highlight-label">Test case đã thiết kế</div>
+                        <div class="highlight-value">Test Case</div>
+                        <div class="highlight-label">Thiết kế kịch bản và test case theo yêu cầu</div>
                     </div>
                     <div class="highlight-card">
-                        <div class="highlight-value placeholder">[số]</div>
-                        <div class="highlight-label">Bug đã phát hiện & ghi nhận</div>
+                        <div class="highlight-value">Bug Report</div>
+                        <div class="highlight-label">Ghi nhận lỗi rõ ràng, tái hiện được</div>
                     </div>
                     <div class="highlight-card">
-                        <div class="highlight-value placeholder">[số]</div>
-                        <div class="highlight-label">Kịch bản tự động hóa</div>
+                        <div class="highlight-value">Regression</div>
+                        <div class="highlight-label">Kiểm thử hồi quy sau mỗi thay đổi</div>
                     </div>
                 </div>
 
@@ -612,7 +626,6 @@
                             </div>
                             <span class="info-date">2023 – 2027</span>
                         </div>
-                        <div class="info-desc">Chuyên ngành: <span class="placeholder">[điền chuyên ngành chính xác]</span></div>
                         <ul class="bullet-list">
                             <li><strong>Đồ án tốt nghiệp:</strong> Xây dựng hệ thống kiểm thử tự động cho ứng dụng quản lý bán hàng.</li>
                             <li><strong>Môn học liên quan:</strong> Kiểm thử phần mềm, Phân tích hệ thống, Cơ sở dữ liệu, Lập trình Java.</li>
@@ -627,19 +640,14 @@
                     <div class="content-card">
                         <div class="info-header">
                             <div class="info-title">Kiểm thử ứng dụng web quản lý bán hàng</div>
-                            <span class="info-date"><span class="placeholder">[thời gian]</span></span>
                         </div>
                         <div class="info-subtitle">Vai trò: Tester / QC</div>
-                        <div class="info-meta">
-                            <span><i class="fa-solid fa-bullseye"></i> Mục tiêu: đảm bảo các luồng nghiệp vụ chính hoạt động đúng</span>
-                            <span><i class="fa-solid fa-toolbox"></i> Công cụ: <span class="placeholder">[Jira / TestRail / Postman / Selenium...]</span></span>
-                        </div>
+                        <div class="info-meta">Mục tiêu: đảm bảo các luồng nghiệp vụ chính hoạt động đúng</div>
                         <ul class="bullet-list">
-                            <li>Phân tích yêu cầu và xây dựng test scenario, test case cho các chức năng: <span class="placeholder">[đăng nhập, quản lý sản phẩm, đơn hàng, báo cáo]</span>.</li>
+                            <li>Phân tích yêu cầu và xây dựng test scenario, test case cho các chức năng chính của hệ thống.</li>
                             <li>Thực hiện kiểm thử chức năng, kiểm thử hồi quy và kiểm thử giao diện với dữ liệu hợp lệ và không hợp lệ.</li>
-                            <li>Viết bug report đầy đủ: các bước tái hiện, kết quả mong đợi và kết quả thực tế. Đã ghi nhận <span class="placeholder">[số]</span> lỗi.</li>
+                            <li>Viết bug report đầy đủ gồm các bước tái hiện, kết quả mong đợi và kết quả thực tế, theo dõi lỗi đến khi xử lý xong.</li>
                             <li>Lập báo cáo kết quả kiểm thử (Test Summary Report) và đề xuất cải thiện cho đội phát triển.</li>
-                            <li>Xây dựng <span class="placeholder">[số]</span> kịch bản tự động cho các luồng chính bằng <span class="placeholder">[Selenium / Playwright]</span>.</li>
                         </ul>
                     </div>
                 </section>
@@ -670,7 +678,6 @@
                                 <span class="tag">Java</span>
                                 <span class="tag">SDLC / STLC</span>
                                 <span class="tag">System Analysis</span>
-                                <span class="tag placeholder">[thêm công cụ đã dùng thực tế]</span>
                             </div>
                         </div>
 
@@ -688,7 +695,6 @@
                             <div class="category-title"><i class="fa-solid fa-language"></i> Ngôn ngữ</div>
                             <div class="tag-list">
                                 <span class="tag">Tiếng Việt (bản ngữ)</span>
-                                <span class="tag placeholder">[Tiếng Anh: mức độ]</span>
                             </div>
                         </div>
 
@@ -701,12 +707,6 @@
         <div class="quick-connect-section">
             <div class="connect-title">Kết nối</div>
             <div class="buttons-row">
-                <a href="[LINK_LINKEDIN]" target="_blank" rel="noopener noreferrer" class="btn-pill">
-                    <i class="fa-brands fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="[LINK_GITHUB]" target="_blank" rel="noopener noreferrer" class="btn-pill">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
                 <a href="cv.pdf" download class="btn-pill primary">
                     <i class="fa-solid fa-file-arrow-down"></i> Tải CV (PDF)
                 </a>
