@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vũ Văn Mạnh | QC Engineer</title>
+    <meta name="description" content="Vũ Văn Mạnh - QC Engineer: kiểm thử chức năng, hồi quy, viết test case và báo cáo lỗi.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +27,6 @@
             --status-online: #22c55e;
             --shadow-neon: 0 0 25px rgba(0, 242, 254, 0.25);
             --shadow-card: 0 15px 35px -5px rgba(0, 0, 0, 0.5);
-            --progress-track: rgba(51, 65, 85, 0.5);
         }
 
         [data-theme="light"] {
@@ -46,10 +46,11 @@
             --status-online: #16a34a;
             --shadow-neon: 0 0 20px rgba(2, 132, 199, 0.2);
             --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-            --progress-track: #e2e8f0;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -110,7 +111,7 @@
             font-size: 18px;
             transition: border-color 0.3s, color 0.3s, transform 0.2s;
         }
-        .theme-toggle-btn:hover {
+        .theme-toggle-btn:hover, .theme-toggle-btn:focus-visible {
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
             transform: scale(1.08);
@@ -180,7 +181,7 @@
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
@@ -230,7 +231,7 @@
             flex-shrink: 0;
         }
 
-        .contact-detail { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; }
+        .contact-detail { min-width: 0; flex: 1; }
         .contact-detail label { display: block; font-size: 11px; color: var(--text-muted); }
         .contact-detail span {
             font-weight: 500;
@@ -250,7 +251,42 @@
         .copy-btn:hover, .copy-btn:focus-visible { color: var(--accent-cyan); }
 
         /* ---------- Main content ---------- */
-        .main-content { display: flex; flex-direction: column; gap: 28px; }
+        .main-content { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+
+        .summary-box {
+            background: var(--card-inner-bg);
+            border-left: 3px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 18px 22px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .summary-box strong { color: var(--text-primary); }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .highlight-card {
+            background: var(--card-inner-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+        }
+        .highlight-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+        }
+        .highlight-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
 
         .section-title {
             font-size: 13px;
@@ -275,6 +311,7 @@
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 22px;
+            transition: border-color 0.3s;
         }
         .content-card:hover { border-color: var(--card-border-hover); }
 
@@ -313,6 +350,15 @@
             line-height: 1.6;
         }
 
+        .info-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 8px 0 4px;
+        }
+
         .bullet-list { list-style: none; margin-top: 10px; }
         .bullet-list li {
             position: relative;
@@ -331,10 +377,9 @@
             line-height: 1;
         }
 
-        /* ---------- Skills (tags thay cho thanh phần trăm) ---------- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
@@ -365,6 +410,11 @@
             background: rgba(56, 189, 248, 0.1);
             color: var(--accent-cyan);
             border: 1px solid var(--card-border);
+        }
+
+        .placeholder {
+            color: #f59e0b;
+            font-style: italic;
         }
 
         /* ---------- Footer ---------- */
@@ -440,20 +490,26 @@
         @media (max-width: 900px) {
             .dashboard-grid { grid-template-columns: 1fr; }
             .profile-sidebar { max-width: 450px; margin: 0 auto; }
-            .skills-grid { grid-template-columns: 1fr; }
+            .highlight-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 600px) {
             .portfolio-wrapper { padding: 20px 15px; }
+            .skills-grid, .highlight-grid { grid-template-columns: 1fr; }
             .buttons-row { flex-direction: column; width: 100%; }
             .btn-pill { width: 100%; justify-content: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow-orb bg-glow-orb-1"></div>
-    <div class="bg-glow-orb bg-glow-orb-2"></div>
+    <div class="bg-glow-orb bg-glow-orb-1" aria-hidden="true"></div>
+    <div class="bg-glow-orb bg-glow-orb-2" aria-hidden="true"></div>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
@@ -479,10 +535,10 @@
                 </div>
 
                 <h1 class="user-name">Vũ Văn Mạnh</h1>
-                <div class="user-title">Chuyên viên kiểm thử phần mềm<br>(QC Engineer)</div>
+                <div class="user-title">QC Engineer<br>Chuyên viên kiểm thử phần mềm</div>
 
                 <p class="user-bio">
-                    Mong muốn phát triển sự nghiệp trong lĩnh vực kiểm thử phần mềm, đặc biệt ở vai trò QC Engineer. Tôi chú trọng chi tiết, kỷ luật và hiệu quả trong công việc, hướng đến mục tiêu góp phần xây dựng sản phẩm chất lượng, ổn định và thân thiện với người dùng.
+                    Mong muốn phát triển sự nghiệp trong kiểm thử phần mềm. Tôi chú trọng chi tiết, kỷ luật và hướng đến việc góp phần xây dựng sản phẩm ổn định, dễ sử dụng và đáng tin cậy.
                 </p>
 
                 <div class="contact-card">
@@ -525,6 +581,25 @@
 
             <main class="main-content">
 
+                <div class="summary-box">
+                    <strong>Tóm tắt:</strong> QC Engineer với nền tảng kiểm thử chức năng và kiểm thử hồi quy. Có kinh nghiệm thiết kế kịch bản và test case, ghi nhận lỗi (Bug Report) rõ ràng, lập báo cáo kết quả kiểm thử. Đang tìm kiếm cơ hội để áp dụng và phát triển kỹ năng trong môi trường làm việc chuyên nghiệp.
+                </div>
+
+                <div class="highlight-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-value placeholder">[số]</div>
+                        <div class="highlight-label">Test case đã thiết kế</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-value placeholder">[số]</div>
+                        <div class="highlight-label">Bug đã phát hiện & ghi nhận</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-value placeholder">[số]</div>
+                        <div class="highlight-label">Kịch bản tự động hóa</div>
+                    </div>
+                </div>
+
                 <section>
                     <div class="section-title">
                         <i class="fa-solid fa-graduation-cap"></i> Học vấn
@@ -532,12 +607,12 @@
                     <div class="content-card">
                         <div class="info-header">
                             <div>
-                                <div class="info-title">Trường Đại học Công nghệ Giao thông Vận tải</div>
-                                <div class="info-subtitle">University of Transport Technology (UTT)</div>
+                                <div class="info-title">Trường Đại học Công nghệ Giao thông Vận tải (UTT)</div>
+                                <div class="info-subtitle">University of Transport Technology</div>
                             </div>
-                            <span class="info-date">2023 - 2027</span>
+                            <span class="info-date">2023 – 2027</span>
                         </div>
-                        <div class="info-desc">Chuyên ngành: [Điện tử Viễn thông / Công nghệ phần mềm – chỉnh lại cho đúng]</div>
+                        <div class="info-desc">Chuyên ngành: <span class="placeholder">[điền chuyên ngành chính xác]</span></div>
                         <ul class="bullet-list">
                             <li><strong>Đồ án tốt nghiệp:</strong> Xây dựng hệ thống kiểm thử tự động cho ứng dụng quản lý bán hàng.</li>
                             <li><strong>Môn học liên quan:</strong> Kiểm thử phần mềm, Phân tích hệ thống, Cơ sở dữ liệu, Lập trình Java.</li>
@@ -547,20 +622,24 @@
 
                 <section>
                     <div class="section-title">
-                        <i class="fa-solid fa-briefcase"></i> Dự án & Kinh nghiệm
+                        <i class="fa-solid fa-briefcase"></i> Dự án kiểm thử
                     </div>
                     <div class="content-card">
                         <div class="info-header">
                             <div class="info-title">Kiểm thử ứng dụng web quản lý bán hàng</div>
-                            <span class="info-date">[Thời gian / Đồ án]</span>
+                            <span class="info-date"><span class="placeholder">[thời gian]</span></span>
                         </div>
-                        <div class="info-subtitle">Vai trò: Kiểm thử viên (Tester / QC)</div>
+                        <div class="info-subtitle">Vai trò: Tester / QC</div>
+                        <div class="info-meta">
+                            <span><i class="fa-solid fa-bullseye"></i> Mục tiêu: đảm bảo các luồng nghiệp vụ chính hoạt động đúng</span>
+                            <span><i class="fa-solid fa-toolbox"></i> Công cụ: <span class="placeholder">[Jira / TestRail / Postman / Selenium...]</span></span>
+                        </div>
                         <ul class="bullet-list">
-                            <li>Phân tích yêu cầu và xây dựng kịch bản kiểm thử (Test Scenario) cùng các test case cho các chức năng chính: [đăng nhập, quản lý sản phẩm, đơn hàng, báo cáo...].</li>
-                            <li>Thực hiện kiểm thử chức năng, kiểm thử hồi quy và kiểm thử giao diện trên nhiều trường hợp dữ liệu hợp lệ và không hợp lệ.</li>
-                            <li>Ghi nhận, mô tả và theo dõi lỗi (Bug Report) với các bước tái hiện, kết quả mong đợi và kết quả thực tế; [số lượng] lỗi đã được phát hiện.</li>
+                            <li>Phân tích yêu cầu và xây dựng test scenario, test case cho các chức năng: <span class="placeholder">[đăng nhập, quản lý sản phẩm, đơn hàng, báo cáo]</span>.</li>
+                            <li>Thực hiện kiểm thử chức năng, kiểm thử hồi quy và kiểm thử giao diện với dữ liệu hợp lệ và không hợp lệ.</li>
+                            <li>Viết bug report đầy đủ: các bước tái hiện, kết quả mong đợi và kết quả thực tế. Đã ghi nhận <span class="placeholder">[số]</span> lỗi.</li>
                             <li>Lập báo cáo kết quả kiểm thử (Test Summary Report) và đề xuất cải thiện cho đội phát triển.</li>
-                            <li>Xây dựng [số lượng] kịch bản kiểm thử tự động cho các luồng chính bằng [công cụ, ví dụ: Selenium / Playwright].</li>
+                            <li>Xây dựng <span class="placeholder">[số]</span> kịch bản tự động cho các luồng chính bằng <span class="placeholder">[Selenium / Playwright]</span>.</li>
                         </ul>
                     </div>
                 </section>
@@ -579,7 +658,8 @@
                                 <span class="tag">Functional Testing</span>
                                 <span class="tag">Regression Testing</span>
                                 <span class="tag">Test Case Design</span>
-                                <span class="tag">Bug Tracking</span>
+                                <span class="tag">Bug Reporting</span>
+                                <span class="tag">Test Summary Report</span>
                             </div>
                         </div>
 
@@ -590,7 +670,7 @@
                                 <span class="tag">Java</span>
                                 <span class="tag">SDLC / STLC</span>
                                 <span class="tag">System Analysis</span>
-                                <!-- Thêm công cụ bạn thực sự dùng, ví dụ: Jira, TestRail, Postman -->
+                                <span class="tag placeholder">[thêm công cụ đã dùng thực tế]</span>
                             </div>
                         </div>
 
@@ -601,6 +681,14 @@
                                 <span class="tag">Giải quyết vấn đề</span>
                                 <span class="tag">Làm việc nhóm</span>
                                 <span class="tag">Quản lý thời gian</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <div class="category-title"><i class="fa-solid fa-language"></i> Ngôn ngữ</div>
+                            <div class="tag-list">
+                                <span class="tag">Tiếng Việt (bản ngữ)</span>
+                                <span class="tag placeholder">[Tiếng Anh: mức độ]</span>
                             </div>
                         </div>
 
@@ -637,12 +725,10 @@
             themeIcon.className = theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
         }
 
-        // Đồng bộ icon với theme hiện tại khi tải trang
         applyTheme(html.getAttribute('data-theme') || 'dark');
 
         themeToggleBtn.addEventListener('click', () => {
-            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            applyTheme(next);
+            applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
         });
 
         async function copyToClipboard(text) {
